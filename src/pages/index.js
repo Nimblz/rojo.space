@@ -7,6 +7,9 @@ import SEO from "../components/seo";
 import logo from "../images/logo-512.png";
 import style from "./index.module.css";
 
+import "prismjs/plugins/line-numbers/prism-line-numbers.css";
+import "prismjs/themes/prism.css";
+
 const Splash = () => (
   <div className={ style.Splash }>
     <h1 className={ style.SplashTitle }>

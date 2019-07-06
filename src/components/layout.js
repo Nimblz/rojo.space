@@ -1,8 +1,10 @@
 import React from "react";
 
-import Header from "./header";
 import Footer from "./footer";
+import Header from "./header";
+
 import "./layout.css";
+import style from "./layout.module.css";
 
 export const PageBlock = ({ className, children }) => (
   <div
@@ -17,34 +19,21 @@ export const PageBlock = ({ className, children }) => (
   </div>
 );
 
-export const NormalPage = ({ children }) => {
-  return (
-    <>
-      <Header siteTitle="Rojo" />
-      <main style={{ flex: `1 0 auto` }}>
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: `60rem`,
-            padding: `0 1rem`,
-          }}
-        >
-          { children }
-        </div>
-      </main>
-      <Footer />
-    </>
-  );
-};
+export const NormalPage = ({ className, title, children }) => (
+  <FullWidthPage>
+    <h1 className={ style.NormalPageTitle }>{ title }</h1>
+    <PageBlock className={ className }>
+      { children }
+    </PageBlock>
+  </FullWidthPage>
+);
 
-export const FullWidthPage = ({ children }) => {
-  return (
-    <>
-      <Header siteTitle="Rojo" />
-      <main style={{ flex: `1 0 auto` }}>
-        { children }
-      </main>
-      <Footer />
-    </>
-  );
-};
+export const FullWidthPage = ({ children }) => (
+  <>
+    <Header />
+    <main style={{ flex: `1 0 auto` }}>
+      { children }
+    </main>
+    <Footer />
+  </>
+);

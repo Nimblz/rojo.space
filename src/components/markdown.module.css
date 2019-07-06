@@ -1,0 +1,29 @@
+.root {
+  max-width: 100%;
+}
+
+.root strong {
+  font-weight: 500;
+}
+
+.root em {
+  font-style: italic;
+}
+
+pre {
+  font-family: monospace;
+}
+
+p {
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5em;
+}
+
+h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5em;
+}

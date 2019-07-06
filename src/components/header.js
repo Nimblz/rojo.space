@@ -1,5 +1,4 @@
 import { Link } from "gatsby";
-import PropTypes from "prop-types";
 import React from "react";
 
 import logo from "../images/logo-512.png";
@@ -13,18 +12,20 @@ const NavItem = ({ name, url }) => (
 
 const Nav = () => (
   <nav className={ styles.Nav }>
-    <a href="/docs" className={ styles.NavItem }>Docs</a>
+    <NavItem name="Docs" url="/docs">Docs</NavItem>
     <NavItem name="Blog" url="/blog" />
   </nav>
 );
 
-const Logo = () => (
-  <Link className={ styles.Logo } to="/">
-    <img src={ logo } alt="Rojo" />
-  </Link>
-);
+const Logo = () => {
+  return (
+    <Link className={ styles.Logo } to="/">
+      <img src={ logo } alt="Rojo" />
+    </Link>
+  );
+};
 
-const Header = ({ siteTitle }) => (
+const Header = () => (
   <header className={ styles.Header }>
     <div className={ styles.HeaderMain }>
       <Logo />
@@ -32,13 +33,5 @@ const Header = ({ siteTitle }) => (
     </div>
   </header>
 );
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-};
-
-Header.defaultProps = {
-  siteTitle: ``,
-};
 
 export default Header;
