@@ -8,13 +8,13 @@ import DocsNav from "./docs-nav";
 
 import style from "./doc-page.module.css";
 
-export default ({ data }) => {
-  const { markdownRemark } = data;
-  const { frontmatter, html } = markdownRemark;
+export default ({ data, pageContext }) => {
+  const { title } = pageContext;
+  const { html } = data.file.children[0];
 
   return (
-    <NormalPage className={ style.root } title={ frontmatter.title }>
-      <SEO title={ frontmatter.title } />
+    <NormalPage className={ style.root } title={ title }>
+      <SEO title={ title } />
       <DocsNav className={ style.nav } />
       <Markdown className={ style.body } html={ html } />
     </NormalPage>
@@ -22,11 +22,12 @@ export default ({ data }) => {
 };
 
 export const query = graphql`
-  query($frontmatterPath: String!) {
-    markdownRemark(frontmatter: { path: { eq: $frontmatterPath } }) {
-      html
-      frontmatter {
-        title
+  query($sourcePath: String!) {
+    file(relativePath: {eq: $sourcePath}, sourceInstanceName: {eq: "docs"}) {
+      children {
+        ... on MarkdownRemark {
+          html
+        }
       }
     }
   }

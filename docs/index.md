@@ -1,14 +1,11 @@
----
-title: "Documentation"
-path: "/docs"
----
+This is the documentation home for Rojo 0.5.x.
 
-Some **documentation** *content*.
+Available versions of these docs:
 
-```javascript
-console.log("Hello, world!")
+* [Latest version (currently 0.5.x)](/docs/latest)
+* [0.5.x](/docs/0.5.x)
+* [0.4.x](/docs/0.4.x)
 
-function foo() {
-	console.log("Help?");
-}
-```
+**Rojo** is a flexible multi-tool designed for creating robust Roblox projects.
+
+This documentation is a continual work in progress. If you find any issues, please file an issue on [Rojo's issue tracker](https://github.com/rojo-rbx/rojo/issues)!

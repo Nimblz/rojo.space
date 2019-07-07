@@ -5,7 +5,18 @@ module.exports = {
     author: `@rojo-rbx`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Rojo`,
+        short_name: `Rojo`,
+        start_url: `/`,
+        background_color: `#e13835`,
+        theme_color: `#e13835`,
+        display: `minimal-ui`,
+        icon: `src/images/logo-square-512.png`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -22,18 +33,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `rojo`,
-        short_name: `rojo`,
-        start_url: `/`,
-        background_color: `#e13835`,
-        theme_color: `#e13835`,
-        display: `minimal-ui`,
-        icon: `src/images/logo-square-512.png`,
-      },
-    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -56,5 +55,7 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-catch-links`,
   ],
 };
