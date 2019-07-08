@@ -45,25 +45,27 @@ exports.createPages = async function({ actions, graphql }) {
     const index = /\/index$/;
     const latestVersion = /^0\.5\.x\//;
 
-    function traverse(pageMap) {
-      for (const [key, value] of Object.entries(pageMap)) {
-        if (typeof value === "string") {
-          const docsRelative = value.replace(md, "").replace(index, "/");
+    function traverse(pageMap, route) {
+      for (const [title, sourcePath] of Object.entries(pageMap)) {
+        console.log("visit", title, sourcePath);
+
+        if (typeof sourcePath === "string") {
+          const docsRelative = sourcePath.replace(md, "").replace(index, "/");
           const relativeUrl = "/docs/" + docsRelative;
+          const breadcrumbTitle = [...route, title].join(" / ");
 
           actions.createPage({
             path: relativeUrl,
             component: require.resolve("./src/components/doc-page.js"),
             context: {
-              sourcePath: value,
-              title: key,
+              sourcePath,
+              title,
+              breadcrumbTitle,
             },
           });
 
-          if (latestVersion.test(value)) {
+          if (latestVersion.test(sourcePath)) {
             const latestUrl = "/docs/latest/" + docsRelative.replace(latestVersion, "");
-
-            console.log("redirect", latestUrl, "->", relativeUrl);
 
             actions.createRedirect({
               fromPath: latestUrl,
@@ -74,7 +76,9 @@ exports.createPages = async function({ actions, graphql }) {
 
           console.log("");
         } else {
-          traverse(value);
+          for (const pages of sourcePath) {
+            traverse(pages, [...route, title]);
+          }
         }
       }
     }
@@ -82,7 +86,9 @@ exports.createPages = async function({ actions, graphql }) {
     const docsContent = await readFilePromise("docs/pages.yml");
     const docs = yaml.safeLoad(docsContent);
 
-    traverse(docs);
+    for (const pages of docs.pages) {
+      traverse(pages, ["Docs"]);
+    }
 
     actions.createRedirect({
       fromPath: "/docs",

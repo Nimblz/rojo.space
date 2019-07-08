@@ -9,11 +9,11 @@ import DocsNav from "./docs-nav";
 import style from "./doc-page.module.css";
 
 export default ({ data, pageContext }) => {
-  const { title } = pageContext;
+  const { title, breadcrumbTitle } = pageContext;
   const { html } = data.file.children[0];
 
   return (
-    <NormalPage className={ style.root } title={ title }>
+    <NormalPage className={ style.root } title={ breadcrumbTitle }>
       <SEO title={ title } />
       <DocsNav className={ style.nav } />
       <Markdown className={ style.body } html={ html } />
