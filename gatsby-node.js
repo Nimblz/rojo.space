@@ -8,8 +8,6 @@ exports.createPages = async function({ actions, graphql }) {
     function createDocPage(pageEntry) {
       const [title, contentPath, children] = pageEntry;
 
-      console.log(title, contentPath, children);
-
       if (contentPath != null) {
         const path = "/docs/" + contentPath.replace(md, "").replace(index, "/");
 

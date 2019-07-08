@@ -9,7 +9,7 @@ const md = /\.md$/;
 const index = /\/index$/;
 
 const Arrow = () => (
-  <svg viewBox="0 0 926.23699 573.74994" version="1.1" x="0px" y="0px" width="10" height="10" class="css-19n436v">
+  <svg viewBox="0 0 926.23699 573.74994" version="1.1" x="0px" y="0px" width="10" height="10">
     <g transform="translate(904.92214,-879.1482)">
       <path d="
             m -673.67664,1221.6502 -231.2455,-231.24803 55.6165,
