@@ -1,97 +1,47 @@
-const { readFile } = require("fs");
-const yaml = require("js-yaml");
+const docPages = require("./docs/pages.json");
 
-function readFilePromise(path) {
-  return new Promise((resolve, reject) => {
-    readFile(path, "utf8", (error, data) => {
-      if (error) {
-        return reject(error);
-      }
-
-      resolve(data);
-    });
-  });
-}
+const md = /\.md$/;
+const index = /\/index$/;
 
 exports.createPages = async function({ actions, graphql }) {
-  // const { data } = await graphql(`
-  //   query {
-  //     allMarkdownRemark {
-  //       edges {
-  //         node {
-  //           frontmatter {
-  //             path
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
-
-  // data.allMarkdownRemark.edges.forEach(edge => {
-  //   const path = edge.node.frontmatter.path;
-
-  //   if (path != null && path.startsWith("/docs")) {
-  //     actions.createPage({
-  //       path,
-  //       component: require.resolve(`./src/components/doc-page.js`),
-  //       context: { frontmatterPath: path },
-  //     });
-  //   }
-  // });
-
   {
-    const md = /\.md$/;
-    const index = /\/index$/;
-    const latestVersion = /^0\.5\.x\//;
+    function createDocPage(pageEntry) {
+      const [title, contentPath, children] = pageEntry;
 
-    function traverse(pageMap, route) {
-      for (const [title, sourcePath] of Object.entries(pageMap)) {
-        console.log("visit", title, sourcePath);
+      console.log(title, contentPath, children);
 
-        if (typeof sourcePath === "string") {
-          const docsRelative = sourcePath.replace(md, "").replace(index, "/");
-          const relativeUrl = "/docs/" + docsRelative;
-          const breadcrumbTitle = [...route, title].join(" / ");
+      if (contentPath != null) {
+        const path = "/docs/" + contentPath.replace(md, "").replace(index, "/");
 
-          actions.createPage({
-            path: relativeUrl,
-            component: require.resolve("./src/components/doc-page.js"),
-            context: {
-              sourcePath,
-              title,
-              breadcrumbTitle,
-            },
-          });
+        actions.createPage({
+          path,
+          component: require.resolve("./src/components/doc-page.js"),
+          context: {
+            contentPath,
+            title,
+          },
+        });
+      }
 
-          if (latestVersion.test(sourcePath)) {
-            const latestUrl = "/docs/latest/" + docsRelative.replace(latestVersion, "");
-
-            actions.createRedirect({
-              fromPath: latestUrl,
-              toPath: relativeUrl,
-              redirectInBrowser: true,
-            });
-          }
-
-          console.log("");
-        } else {
-          for (const pages of sourcePath) {
-            traverse(pages, [...route, title]);
-          }
+      if (children != null) {
+        for (const childEntry of children) {
+          createDocPage(childEntry);
         }
       }
     }
 
-    const docsContent = await readFilePromise("docs/pages.yml");
-    const docs = yaml.safeLoad(docsContent);
-
-    for (const pages of docs.pages) {
-      traverse(pages, ["Docs"]);
+    for (const pageEntry of docPages) {
+      createDocPage(pageEntry);
     }
 
     actions.createRedirect({
       fromPath: "/docs",
+      toPath: "/docs/0.5.x",
+      redirectInBrowser: true,
+    });
+
+    actions.createRedirect({
+      fromPath: "/docs/latest",
       toPath: "/docs/0.5.x",
       redirectInBrowser: true,
     });
@@ -101,7 +51,5 @@ exports.createPages = async function({ actions, graphql }) {
 exports.onCreateNode = async function({ node }) {
   if (node.internal.type === "SitePage") {
     console.log("creating page", node.path);
-  } else {
-    console.log(node.internal.type);
   }
 };

@@ -1,7 +1,16 @@
 .NavItem {
+  position: relative;
   display: flex;
   align-items: center;
   padding: 1rem;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: transparent;
+  transition: border-bottom-color 500ms ease-in-out;
+}
+
+.ActiveNavItem {
+  border-bottom-color: white;
 }
 
 .Nav {

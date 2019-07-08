@@ -15,15 +15,38 @@ pre {
 }
 
 p {
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
 }
 
 h2 {
   font-size: 1.8rem;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.3em;
 }
 
 h3 {
   font-size: 1.4rem;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.3em;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+
+tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+td, th {
+  padding: 0.2rem 0.8rem;
+  border-left: 1px solid #ccc;
+}
+
+thead tr {
+  border-bottom: 1px solid #ccc;
+}
+
+th {
+  font-weight: 500;
 }

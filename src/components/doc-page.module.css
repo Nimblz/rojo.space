@@ -4,13 +4,14 @@
 
 .body {
   order: 1;
-  flex: 1 1 40rem;
+  flex: 0 1 50rem;
+  overflow: hidden;
   padding-right: 1rem;
 }
 
-.nav {
+.navContainer {
   order: 2;
-  flex: 0 0 10rem;
+  flex: 1 0 15rem;
 }
 
 @media (max-width: 50rem) {
@@ -22,7 +23,7 @@
     padding-right: 0;
   }
 
-  .nav {
+  .navContainer {
     margin-bottom: 2rem;
   }
 }

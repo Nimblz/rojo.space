@@ -2,16 +2,16 @@ import { Link } from "gatsby";
 import React from "react";
 
 import logo from "../images/logo-512.png";
-import styles from "./header.module.css";
+import style from "./header.module.css";
 
 const NavItem = ({ name, url }) => (
-  <Link to={ url } className={ styles.NavItem }>
+  <Link to={ url } className={ style.NavItem } activeClassName={ style.ActiveNavItem } partiallyActive={ true }>
     { name }
   </Link>
 );
 
 const Nav = () => (
-  <nav className={ styles.Nav }>
+  <nav className={ style.Nav }>
     <NavItem name="Docs" url="/docs">Docs</NavItem>
     <NavItem name="Blog" url="/blog" />
   </nav>
@@ -19,15 +19,15 @@ const Nav = () => (
 
 const Logo = () => {
   return (
-    <Link className={ styles.Logo } to="/">
+    <Link className={ style.Logo } to="/">
       <img src={ logo } alt="Rojo" />
     </Link>
   );
 };
 
 const Header = () => (
-  <header className={ styles.Header }>
-    <div className={ styles.HeaderMain }>
+  <header className={ style.Header }>
+    <div className={ style.HeaderMain }>
       <Logo />
       <Nav />
     </div>
