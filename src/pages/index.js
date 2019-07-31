@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
+import { Link } from "react-router-dom";
 
 import { FullWidthPage, PageBlock } from "../components/layout";
 import SEO from "../components/seo";
