@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "gatsby";
 
+import { Link } from "components/Router";
 import styles from "./footer.module.css";
 
 const FooterNav = () => (
@@ -17,9 +17,6 @@ const FooterNav = () => (
 const FooterAbout = () => (
   <div className={styles.FooterAbout}>
     <div>© {new Date().getFullYear()} Rojo</div>
-    <div>
-      Built with <a href="https://www.gatsbyjs.org">Gatsby</a>
-    </div>
   </div>
 );
 

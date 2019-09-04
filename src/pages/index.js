@@ -1,7 +1,7 @@
 import React from "react";
+import { Head } from "react-static";
 
-import { FullWidthPage, PageBlock } from "components/layout";
-import SEO from "components/seo";
+import { PageBlock } from "components/layout";
 
 import logo from "images/logo-512.png";
 import style from "./index.module.css";
@@ -66,12 +66,15 @@ const Details = () => (
 );
 
 const IndexPage = () => (
-  <FullWidthPage>
-    <SEO title="Home" />
+  <div>
+    <Head>
+      <title>Rojo | Home</title>
+    </Head>
+
     <Splash />
     <Features />
     <Details />
-  </FullWidthPage>
+  </div>
 );
 
 export default IndexPage;

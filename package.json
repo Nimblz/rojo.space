@@ -13,14 +13,16 @@
     "format": "prettier --write src/**/*.{js,jsx}"
   },
   "dependencies": {
-    "@reach/router": "^1.2.1",
-    "axios": "^0.19.0",
+    "@babel/core": "^7.5.5",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
     "react-static": "^7.2.0",
-    "react-static-plugin-reach-router": "^7.2.0",
+    "react-static-plugin-css-modules": "^7.2.0",
+    "react-static-plugin-react-router": "^7.2.0",
     "react-static-plugin-sitemap": "^7.2.0",
-    "react-static-plugin-source-filesystem": "^7.2.0"
+    "webpack": "^4.39.3"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
@@ -31,8 +33,8 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
-    "serve": "^11.1.0",
-    "gh-pages": "^2.0.1",
-    "prettier": "^1.18.2"
+    "gh-pages": "^2.1.1",
+    "prettier": "^1.18.2",
+    "serve": "^11.1.0"
   }
 }

@@ -1,8 +1,8 @@
-import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
 
-import logo from "../images/logo-512.png";
+import { Link } from "components/Router";
+import logo from "images/logo-512.png";
 import styles from "./header.module.css";
 
 const NavItem = ({ name, url }) => (

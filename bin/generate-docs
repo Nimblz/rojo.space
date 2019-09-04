@@ -5,11 +5,11 @@
 set -e
 
 CHECKOUT="$(mktemp -d)"
-OUTPUT="$(pwd)/public/docs"
+OUTPUT="$(pwd)/dist/docs"
 
 npm run-script build
 
-cd public
+cd dist
 
 echo "rojo.space" > CNAME
 
