@@ -6,14 +6,14 @@ import "./layout.css";
 
 export const PageBlock = ({ className, children }) => (
   <div
-    className={ className }
+    className={className}
     style={{
       margin: `0 auto`,
       maxWidth: `60rem`,
       padding: `0 1rem`,
     }}
   >
-    { children }
+    {children}
   </div>
 );
 
@@ -29,7 +29,7 @@ export const NormalPage = ({ children }) => {
             padding: `0 1rem`,
           }}
         >
-          { children }
+          {children}
         </div>
       </main>
       <Footer />
@@ -41,9 +41,7 @@ export const FullWidthPage = ({ children }) => {
   return (
     <>
       <Header siteTitle="Rojo" />
-      <main style={{ flex: `1 0 auto` }}>
-        { children }
-      </main>
+      <main style={{ flex: `1 0 auto` }}>{children}</main>
       <Footer />
     </>
   );
