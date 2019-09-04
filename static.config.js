@@ -1,5 +1,4 @@
 import React from "react";
-import { useSiteData } from "react-static";
 
 export default {
   siteRoot: "https://rojo.space",
@@ -7,7 +6,7 @@ export default {
     siteTitle: "Rojo",
     metaDescription: "Enables professional-grade development tools for Roblox developers",
   }),
-  getRoutes: async () => {
+  getRoutes: () => {
     return [
       {
         path: "/",
