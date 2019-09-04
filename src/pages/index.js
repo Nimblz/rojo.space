@@ -1,10 +1,9 @@
 import React from "react";
-import { Link } from "gatsby";
 
-import { FullWidthPage, PageBlock } from "../components/layout";
-import SEO from "../components/seo";
+import { FullWidthPage, PageBlock } from "components/layout";
+import SEO from "components/seo";
 
-import logo from "../images/logo-512.png";
+import logo from "images/logo-512.png";
 import style from "./index.module.css";
 
 const Splash = () => (

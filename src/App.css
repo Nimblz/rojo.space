@@ -38,19 +38,3 @@ body {
   word-wrap: break-word;
   min-height: 100%;
 }
-
-#___gatsby {
-  flex: 1 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-#___gatsby > div {
-  flex: 1 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-#___gatsby > div > * {
-  width: 100%;
-}
